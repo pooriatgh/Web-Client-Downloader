@@ -71,9 +71,9 @@
             this.RB_OpenRead.AutoSize = true;
             this.RB_OpenRead.Location = new System.Drawing.Point(6, 42);
             this.RB_OpenRead.Name = "RB_OpenRead";
-            this.RB_OpenRead.Size = new System.Drawing.Size(116, 17);
+            this.RB_OpenRead.Size = new System.Drawing.Size(77, 17);
             this.RB_OpenRead.TabIndex = 3;
-            this.RB_OpenRead.Text = "OpenRead(Stream)";
+            this.RB_OpenRead.Text = "OpenRead";
             this.RB_OpenRead.UseVisualStyleBackColor = true;
             // 
             // RB_DownloadData

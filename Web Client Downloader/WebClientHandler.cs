@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -26,6 +27,17 @@ namespace Web_Client_Downloader
         public void TestDownloadFile(string fileName)
         {
             webClient.DownloadFile(Url, fileName);
+        }
+        public string TestOpenRead()
+        {
+            using (var stream = webClient.OpenRead(Url))
+            {
+                using (var streamReader = new StreamReader(stream))
+                {
+                    var text = streamReader.ReadToEnd();
+                    return text;
+                }
+            }
         }
     }
 }

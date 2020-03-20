@@ -51,6 +51,10 @@ namespace Web_Client_Downloader
                             webClientHandler.TestDownloadFile(saveFileDialog.FileName);
                         }
                     }
+                    else if (checkedButton.Text.Equals("OpenRead"))
+                    {
+                        RTXT_Content.Text = webClientHandler.TestOpenRead();
+                    }
                 }
                 else
                 {
