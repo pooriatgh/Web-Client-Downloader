@@ -36,8 +36,8 @@
             this.RB_DownloadString = new System.Windows.Forms.RadioButton();
             this.Btn_Submit = new System.Windows.Forms.Button();
             this.GB_Setting = new System.Windows.Forms.GroupBox();
-            this.LBL_Synchronization = new System.Windows.Forms.Label();
             this.CB_Synchronization = new System.Windows.Forms.ComboBox();
+            this.LBL_Synchronization = new System.Windows.Forms.Label();
             this.LBL_URL = new System.Windows.Forms.Label();
             this.TXT_Url = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -110,7 +110,7 @@
             // 
             // Btn_Submit
             // 
-            this.Btn_Submit.Location = new System.Drawing.Point(15, 204);
+            this.Btn_Submit.Location = new System.Drawing.Point(15, 189);
             this.Btn_Submit.Name = "Btn_Submit";
             this.Btn_Submit.Size = new System.Drawing.Size(254, 23);
             this.Btn_Submit.TabIndex = 3;
@@ -124,10 +124,21 @@
             this.GB_Setting.Controls.Add(this.LBL_Synchronization);
             this.GB_Setting.Location = new System.Drawing.Point(15, 117);
             this.GB_Setting.Name = "GB_Setting";
-            this.GB_Setting.Size = new System.Drawing.Size(254, 81);
+            this.GB_Setting.Size = new System.Drawing.Size(254, 66);
             this.GB_Setting.TabIndex = 4;
             this.GB_Setting.TabStop = false;
             this.GB_Setting.Text = "Setting";
+            // 
+            // CB_Synchronization
+            // 
+            this.CB_Synchronization.FormattingEnabled = true;
+            this.CB_Synchronization.Items.AddRange(new object[] {
+            "Sync",
+            "Async"});
+            this.CB_Synchronization.Location = new System.Drawing.Point(97, 23);
+            this.CB_Synchronization.Name = "CB_Synchronization";
+            this.CB_Synchronization.Size = new System.Drawing.Size(121, 21);
+            this.CB_Synchronization.TabIndex = 6;
             // 
             // LBL_Synchronization
             // 
@@ -137,17 +148,6 @@
             this.LBL_Synchronization.Size = new System.Drawing.Size(85, 13);
             this.LBL_Synchronization.TabIndex = 5;
             this.LBL_Synchronization.Text = "Synchronization:";
-            // 
-            // CB_Synchronization
-            // 
-            this.CB_Synchronization.FormattingEnabled = true;
-            this.CB_Synchronization.Items.AddRange(new object[] {
-            "Sync",
-            "Aysnc"});
-            this.CB_Synchronization.Location = new System.Drawing.Point(97, 23);
-            this.CB_Synchronization.Name = "CB_Synchronization";
-            this.CB_Synchronization.Size = new System.Drawing.Size(121, 21);
-            this.CB_Synchronization.TabIndex = 6;
             // 
             // LBL_URL
             // 
@@ -178,6 +178,7 @@
             this.Controls.Add(this.RTXT_Content);
             this.Name = "FormDashbord";
             this.Text = "Dashbord";
+            this.Load += new System.EventHandler(this.FormDashbord_Load);
             this.GB_WebClientMethods.ResumeLayout(false);
             this.GB_WebClientMethods.PerformLayout();
             this.GB_Setting.ResumeLayout(false);

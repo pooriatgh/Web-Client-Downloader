@@ -21,33 +21,51 @@ namespace Web_Client_Downloader
 
         private void Btn_Submit_Click(object sender, EventArgs e)
         {
-            var checkedButton = GB_WebClientMethods.Controls.OfType<RadioButton>()
-                                      .FirstOrDefault(r => r.Checked);
-            var webClientHandler = new WebClientHandler(TXT_Url.Text);
-            if (checkedButton.Text.Equals("DownloadString"))
+            if (!String.IsNullOrEmpty(TXT_Url.Text))
             {
-                RTXT_Content.Text = webClientHandler.TestDownloadString();
-            }
-            else if (checkedButton.Text.Equals("DownloadData"))
-            {
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                var checkedButton = GB_WebClientMethods.Controls.OfType<RadioButton>()
+                                     .FirstOrDefault(r => r.Checked);
+                var webClientHandler = new WebClientHandler(TXT_Url.Text);
+                RTXT_Content.Text = String.Empty;
+                if (CB_Synchronization.SelectedItem.ToString().Equals("Sync"))
                 {
-                    byte[] data = webClientHandler.TestDownloadData();
-                    File.WriteAllBytes(saveFileDialog.FileName, data);
+                    if (checkedButton.Text.Equals("DownloadString"))
+                    {
+                        RTXT_Content.Text = webClientHandler.TestDownloadString();
+                    }
+                    else if (checkedButton.Text.Equals("DownloadData"))
+                    {
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+                        if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            byte[] data = webClientHandler.TestDownloadData();
+                            File.WriteAllBytes(saveFileDialog.FileName, data);
 
-                }    
-            }
-            else if (checkedButton.Text.Equals("DownloadFile"))
-            {
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    webClientHandler.TestDownloadFile(saveFileDialog.FileName);
+                        }
+                    }
+                    else if (checkedButton.Text.Equals("DownloadFile"))
+                    {
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+                        if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            webClientHandler.TestDownloadFile(saveFileDialog.FileName);
+                        }
+                    }
                 }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill the Url textbox.");
             }
         }
 
-       
+        private void FormDashbord_Load(object sender, EventArgs e)
+        {
+            CB_Synchronization.SelectedIndex = 0;
+        }
     }
 }
